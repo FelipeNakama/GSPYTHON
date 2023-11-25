@@ -1,3 +1,8 @@
+Integrantes do Grupo:
+Felipe Megumi Nakama RM:552821
+Micael Azarias       RM: 
+
+
 Protótipo de Triagem de Sintomas
 
 Descrição do Projeto:
