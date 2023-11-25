@@ -21,10 +21,10 @@ Instruções de Uso:
       git clone https://github.com/FelipeNakama/GSPYTHON.git
   
   2 - Navegue até o diretório do projeto:
-      cd GSPYTHON
+      "cd GSPYTHON"
   
   3 - Execute o script Python:
-      python prototipoGS.py
+      "python prototipoGS.py"
   
   4 - A interface gráfica será exibida. Selecione os sintomas desejados clicando nos botões correspondentes.
   
