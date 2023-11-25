@@ -1,25 +1,24 @@
 Integrantes do Grupo:
 
-Felipe Megumi Nakama RM:552821
+- Felipe Megumi Nakama RM:552821
 
-Micael Azarias       RM: 
+- Micael Azarias       RM: 
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+# Protótipo de Triagem de Sintomas
 
-
-Protótipo de Triagem de Sintomas
-
-Descrição do Projeto:
+## Descrição do Projeto:
 
 Este é um  protótipo desenvolvido em Python usando a biblioteca tkinter para criar uma interface gráfica interativa destinada à triagem de sintomas de pacientes. 
 O aplicativo permite aos usuários selecionar sintomas específicos, visualizar os sintomas escolhidos e enviar a lista para avaliação médica.
 
-Funcionalidades Principais:
+## Funcionalidades Principais:
 - Seleção de sintomas através de botões interativos.
 - Visualização em tempo real dos sintomas selecionados.
 - Envio da lista de sintomas para avaliação.
 
-Instruções de Uso:
+## Instruções de Uso:
 - Requisitos
   - Python 3.x instalado no sistema.
   - Biblioteca tkinter (geralmente incluída na instalação padrão do Python).
