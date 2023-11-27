@@ -6,12 +6,12 @@ Integrantes do Grupo:
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# Protótipo de Triagem de Sintomas
+# Protótipo de Seleção de Sintomas
 
 ## Descrição do Projeto:
 
-Este é um  protótipo desenvolvido em Python usando a biblioteca tkinter para criar uma interface gráfica interativa destinada à triagem de sintomas de pacientes. 
-O aplicativo permite aos usuários selecionar sintomas específicos, visualizar os sintomas escolhidos e enviar a lista para avaliação médica.
+Este é um  protótipo desenvolvido em Python usando a biblioteca tkinter para criar uma interface gráfica interativa destinada à seleção de sintomas de pacientes. 
+O aplicativo permite aos usuários selecionar os seus próprios sintomas específicos, visualizar os sintomas escolhidos e enviar a lista para avaliação médica.
 
 ## Funcionalidades Principais:
 - Seleção de sintomas através de botões interativos.
