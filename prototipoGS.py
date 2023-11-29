@@ -1,9 +1,10 @@
 import tkinter as tk
+from tkinter import messagebox
 
 class CadastroSintomasApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("O que está sentindo?")    # É o titulo da janela
+        self.root.title("Selecione os seus sintomas")    # É o titulo da janela
 
         self.sintomas_selecionados = [] # Cria uma lista vazia para armazenar os sintomas selecionados
 
@@ -33,7 +34,7 @@ class CadastroSintomasApp:
         self.button_excluir_ultimo = tk.Button(root, text="Excluir Último", width=button_width, command=self.excluir_ultimo_sintoma)
 
         # É o nome da seção que vai mostrar os sintomas selecionados antes de serem enviados
-        self.label_sintomas_selecionados = tk.Label(root, text="Sintomas Selecionados: ")
+        self.label_sintomas_selecionados = tk.Label(root, text="Sintomas Selecionados:")
 
         # Define o widget (area branca) de saída para exibir a lista de sintomas
         self.text_lista_sintomas = tk.Text(root, height=10, width=40)
@@ -102,13 +103,17 @@ class CadastroSintomasApp:
         # Essa parte pega a lista recem atualizada com os sintomas escolhidos e mostra eles no widget label_sintomas_selecionados, que é responsavel por mostrar a lista antes de ser enviada
         self.label_sintomas_selecionados.config(text=f"Sintomas Selecionados: {', '.join(self.sintomas_selecionados)}")  # O .join transforma a lista em uma string, separados por virgulas, para mostrar no widget todos os sintomas em uma só linha
 
-    def enviar_sintomas(self):                                              # Define a função enviar_sintomas, chamada pelo botão enviar, definido mais acima
-        self.text_lista_sintomas.config(state=tk.NORMAL)                    # Muda o estado do text_lista_sintomas para normal. Só assim é possivel fazer alterações nesse widget
-        self.text_lista_sintomas.delete(1.0, tk.END)                        # Essa parte deleta os sintomas escritos no widget. 1.0 representa linha 1 coluna 0, ele ele começa a deletar a partir disso
-        self.text_lista_sintomas.insert(tk.END, "Sintomas selecionados:\n") # Essa parte insere a frase "Sintomas Selecionados:" no widget. O \n faz a quebra da linha, para que os sintomas apareçam embaixo da frase
-        for sintoma in self.sintomas_selecionados:                          # Esse loop percorre a lista de sintomas selecionados, adicionando cada um deles ao widget. 
-            self.text_lista_sintomas.insert(tk.END, f"{sintoma}\n")         # O \n faz a quebra de linha para que os sintomas apareçam um embaixo do outro
-        self.text_lista_sintomas.config(state=tk.DISABLED)                  # Muda o estado do text_lista_sintomas para disabled. Isso impede qualquer alteração no widget depois de clicar em enviar
+    def enviar_sintomas(self):                                                                         # Define a função enviar_sintomas, chamada pelo botão enviar, definido mais acima
+        if not self.sintomas_selecionados:                                                             # Checa se a lista self_sintomas_selecionados está vazia (lista vazia em python é false em termos booleanos, entao esse if é true se a lista estiver vazia)
+            messagebox.showwarning("Aviso", "Selecione pelo menos um sintoma para enviar ao médico.")  # Se estiver vazia, manda essa mensagem para o usuario.
+            return                                                                                     # Encerra todo o processo iniciado pelo aperto do botao, para evitar que o código continue rodando
+        
+        self.text_lista_sintomas.config(state=tk.NORMAL)                                               # Muda o estado do text_lista_sintomas para normal. Só assim é possivel fazer alterações nesse widget
+        self.text_lista_sintomas.delete(1.0, tk.END)                                                   # Essa parte deleta os sintomas escritos no widget. 1.0 representa linha 1 coluna 0, ele ele começa a deletar a partir disso
+        self.text_lista_sintomas.insert(tk.END, "Encaminharemos para o médico:\n")                     # Essa parte insere a frase "Sintomas Selecionados:" no widget. O \n faz a quebra da linha, para que os sintomas apareçam embaixo da frase
+        for sintoma in self.sintomas_selecionados:                                                     # Esse loop percorre a lista de sintomas selecionados, adicionando cada um deles ao widget. 
+            self.text_lista_sintomas.insert(tk.END, f"{sintoma}\n")                                    # O \n faz a quebra de linha para que os sintomas apareçam um embaixo do outro
+        self.text_lista_sintomas.config(state=tk.DISABLED)                                             # Muda o estado do text_lista_sintomas para disabled. Isso impede qualquer alteração no widget depois de clicar em enviar
 
     def resetar_sintomas(self):                                                 # Define a função resetar_sintomas, que é chamada pelo botão Resetar sintomas                                     
         self.sintomas_selecionados = []                                         # Ela redefine a lista self.sintomas_selecionados para uma lista vazia
@@ -119,7 +124,7 @@ class CadastroSintomasApp:
             self.sintomas_selecionados.pop()                                                                                 # o .pop() remove o ultimo elemento da lista self.sintomas_selecionados
             self.label_sintomas_selecionados.config(text=f"Sintomas Selecionados: {', '.join(self.sintomas_selecionados)}")  # Também tem a função de atualizar o rótulo label_sintomas_selecionados, para que ele mostre a lista atualizada
 
-if __name__ == "__main__":          # Essa parte verifica se o script está sendo executado diretamente, já que nesse caso "o __name__" vai ser definido como "__main__". Isso nao acontece quando o script é importado de outro script.
+if __name__ == "__main__":          # Essa parte verifica se o script está sendo executado diretamente, já que nesse caso "__name__" vai ser definido como "__main__". Isso nao acontece quando o script é importado de outro script.
     root = tk.Tk()                  # Satisfazendo o primeiro if, essa parte cria uma janela do módulo tkinter. Essa janela é a interface grafica principal desse modulo
     app = CadastroSintomasApp(root) # Cria a instancia do CadastroSintomasApp definida no começo do código com o argumento root, que é o argumento definido acima, iniciando o aplicativo no formato tkinter
     root.mainloop()                 # Inicia o loop da interface do tkinter, que ficará rodando em segundo plano enquanto o script está sendo executado, respondendo aos eventos do usuario, até que a janela seja fechada. Ele tambem evita que o programa seja executado mais de uma vez
